@@ -17,11 +17,11 @@ export default function Launches() {
   }
   return (
     <div>
-      <ul>
+      <ol>
         {data.map((launch, index) => (
           <li key={index}>{launch.mission_name}</li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 }
