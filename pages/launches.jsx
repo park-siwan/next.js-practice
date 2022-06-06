@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Launches() {
-  const [data, setData] = useState(null);
+export default function Launches({ data }) {
+  // const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const fetchLaunches = async () => {
-      const res = await fetch('https://api.spacexdata.com/v3/launches');
-      const data = await res.json();
-      setData(data);
-    };
-    fetchLaunches();
-  }, []);
+  // useEffect(() => {
+  //   const fetchLaunches = async () => {
+  //     const res = await fetch('https://api.spacexdata.com/v3/launches');
+  //     const data = await res.json();
+  //     setData(data);
+  //   };
+  //   fetchLaunches();
+  // }, []);
 
   if (data == null) {
     return null;
@@ -24,4 +24,13 @@ export default function Launches() {
       </ol>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('https://api.spacexdata.com/v3/launches');
+  const data = await res.json();
+
+  return {
+    props: { data },
+  };
 }
