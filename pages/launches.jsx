@@ -29,7 +29,7 @@ export default function Launches({ data }) {
 export async function getServerSideProps() {
   const res = await fetch('https://api.spacexdata.com/v3/launches');
   const data = await res.json();
-
+  console.log('getServerSideProps');
   return {
     props: { data },
   };
